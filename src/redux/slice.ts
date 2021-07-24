@@ -14,20 +14,23 @@ export const initialState: CounterState = {
   error: false,
   errorMessage: "",
 };
-
+//Slice:state/Reducer/Action Createのまとまり
 const counterSlice = createSlice({
   name: "counter",
   initialState,
   reducers: {
+    //action分プラスするReducer
     incrementCounter: (state, action: PayloadAction<number>) => ({
       ...state,
       count: state.count + action.payload,
     }),
+    //action分マイナスするReducer
     decrementCounter: (state, action: PayloadAction<number>) => ({
       ...state,
       count: state.count - action.payload,
     }),
   },
+  //別のSliceで生成されたActionに反応する場合
   extraReducers: (builder) => {
     builder.addCase(asyncIncrementCounter.pending, (state) => {
       return {
