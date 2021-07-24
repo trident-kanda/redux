@@ -4,16 +4,19 @@ import { useCounterState } from "../redux/selectors";
 import counterSlice from "../redux/slice";
 
 export default function Home() {
+  // dispatch：stateの変更をする際に利用
+  // Actionを経由してstateの変更を行う
   const dispatch = useDispatch();
   const state = useCounterState().counter;
-
+  //クリックでカウントを増やす
   const onClickIncrement = () => {
     dispatch(counterSlice.actions.incrementCounter(1));
   };
-
+  //クリックでカウントを減らす
   const onClickDecrement = () => {
     dispatch(counterSlice.actions.decrementCounter(1));
   };
+  //非同期でカウント10増やす
   const onClickAsyncIncrement = async () => {
     await dispatch(asyncIncrementCounter(10));
   };
