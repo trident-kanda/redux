@@ -15,6 +15,7 @@ export type StoreState = ReturnType<typeof preloadedState>;
 
 export type ReduxStore = Store<StoreState>;
 
+//_Appで実行
 const createStore = () => {
   const middlewareList = [...getDefaultMiddleware(), logger];
 
